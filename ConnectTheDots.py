@@ -49,6 +49,8 @@ def run(context):
                         distance = point.geometry.distanceTo(merge.geometry)
                         if 0.0 < distance < threshold_distance:
                             try:
+                                vector = point.geometry.vectorTo(merge.geometry)
+                                merge.move(vector)                                
                                 point.merge(merge)
                             except:
                                 error_count += 1
